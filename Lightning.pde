@@ -100,3 +100,37 @@ void raindrop() {
     fill(0,0,255);
   ellipse(random(width),random(height)+50,0.1,0.1);
 }
+
+int x1 = 150;
+int x2 = 150;
+int y1 = 0;
+int y2 = 0;
+
+
+void setup()
+{
+  size(300,300);
+  strokeWeight(5);
+  background(0);
+}
+
+void draw()
+{
+  stroke(200,200,0);
+  while (y2 < 300)
+  {
+    x2 = x1 + (int)(Math.random()*20-9);
+    y2 = y1 + (int)(Math.random()*10);
+    line(x1,y1,x2,y2);
+    y1 = y2;
+    x1 = x2;
+   
+  }
+ 
+}
+
+void cloud() {
+  fill(90, 90, 90);
+  stroke(150, 150, 150);
+  ellipse(150, -10, 220, 80);
+}
