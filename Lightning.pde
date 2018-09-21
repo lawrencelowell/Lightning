@@ -12,13 +12,12 @@ int cycle = 1;
 void setup()
 {
   size(300,300);
-  frameRate(10);
-  strokeWeight(10);
+  frameRate(15);
+  strokeWeight(6);
   backgroundr();
 }
 void draw()
 {
-
   lightning();
   cloud();
 if (cycle > 1){
@@ -54,40 +53,31 @@ background(0,0,0);
 backgroundr();
   lightning();
   cloud();
+   raindrop();
 
 }
 void lines(float x,float y,float z,float q)
 {
 line(x,y,z,q);
-line(z,q,z+30*r1,q+30*r2+15);
-z = z+30*r1;
+line(z,q,z+50*r1,q+30*r2+15);
+z = z+50*r1;
 q = q+30*r2+15;
-line(z,q,z-30*r3,q+30*r4+15);
-z = z-30*r3;
+line(z,q,z-50*r3,q+30*r4+15);
+z = z-50*r3;
 q = q+30*r4+15;
-line(z,q,z+30*r5,q+30*r6+15);
-z = z+30*r5;
+line(z,q,z+50*r5,q+30*r6+15);
+z = z+50*r5;
 q = q+30*r6+15;
-line(z,q,z-30*r7,q+30*r8+15);
-z = z-30*r7;
+line(z,q,z-50*r7,q+30*r8+15);
+z = z-50*r7;
 q = q+30*r8+15;
-line(z,q,z+30*r9,q+30*r10+15);
-z = z+30*r9;
+line(z,q,z+50*r9,q+30*r10+15);
+z = z+50*r9;
 q = q+30*r10+15;
-line(z,q,z-30*r1,q+32*r2+15);
-z = z-30*r1;
+line(z,q,z-50*r1,q+32*r2+15);
+z = z-50*r1;
 q = q+32*r2+15;
-line(z,q,z+30*r1,q+36*r2+15);
-line(z,q,z+30*r1,q+30*r2+15);
-z = z+30*r1;
-q = q+30*r2+15;
-line(z,q,z-30*r3,q+30*r4+15);
-z = z-30*r3;
-q = q+30*r4+15;
-line(z,q,z+30*r5,q+30*r6+15);
-z = z+30*r5;
-q = q+30*r6+15;
-line(z,q,z-30*r7,q+30*r8+15);
+line(z,q,z+50*r1,300);
 }
 void valued()
 {
@@ -101,4 +91,12 @@ void valued()
   r8 = (float)Math.random();
   r9 = (float)Math.random();
   r10 = (float)Math.random();
+}
+void raindrop() {
+  fill(0,0,255);
+  ellipse(random(width),random(height)+50,0.1,0.1);
+    fill(0,0,255);
+  ellipse(random(width),random(height)+50,0.1,0.1);
+    fill(0,0,255);
+  ellipse(random(width),random(height)+50,0.1,0.1);
 }
