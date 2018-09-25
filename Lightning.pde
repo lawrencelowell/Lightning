@@ -1,136 +1,107 @@
-float r1 = (float)Math.random();
-float r2 = (float)Math.random();
-float r3 = (float)Math.random();
-float r4 = (float)Math.random();
-float r5 = (float)Math.random();
-float r6 = (float)Math.random();
-float r7 = (float)Math.random();
-float r8 = (float)Math.random();
-float r9 = (float)Math.random();
-float r10 = (float)Math.random();
-int cycle = 1;
+int x1 = 150;
+int x2 = 150;
+int y1 = 40;
+int y2 = 0;
+int sx1 = 150;
+int sx2 = 150;
+int ry1 = 0;
+int sy1 = 0;
+int sy2 = 0;
+int ry2 = 0;
+int V = 0;
+int cycle = 0;
+
+
 void setup()
 {
-  size(300,300);
-  frameRate(15);
-  strokeWeight(6);
-  backgroundr();
-}
-void draw()
-{
-  lightning();
-  cloud();
-if (cycle > 1){
-reset();
+  size(300, 300);
+  strokeWeight(5);
+  background(0);
+  frameRate(30);
 }
 
- 
+void draw()
+{
+
+  if (cycle < 14000){
+  background(0);
+  cloud();
+    stroke(230, 230, 0);
+  while (y2 < 390)
+  {
+    x2 = x1 + (int)(Math.random()*20-10);
+    y2 = y1 + (int)(Math.random()*10);
+    line(x1, y1, x2, y2);
+    y1 = y2;
+    x1 = x2;
+    if (y2 < 140) {
+      sx1 = x1;
+      sy1 = y1;
+    }
+  }
+  if (y2 < 390 && y2 > 140)
+  {
+    sx2 = sx1 + (int)(Math.random()*30-15);
+    sy2 = sy1 + (int)(Math.random()*8);
+    line(sx1, sy1, sx2, sy2);
+    sy1 = sy2;
+    sx1 = sx2;
+  }
+  raindrops();
+  }
+    if (cycle > 20)
+  {
+    textSize(35);
+    fill(155,0,0);
+text("Memed", 100, 150);
+  }
 }
 void mousePressed()
 {
-  cycle = cycle + 1;
-valued();
-       
+  valued();
+    cycle = cycle + 1;
+  background(255);
   redraw();
-}
-void lightning()
-{
-stroke(190+r1*30,190+r2*30,0+r3*30,220);
-lines(50+100,40+3*r2,50*r3+120,50.0+r4*30);
-}
 
-void cloud(){
-  fill(90,90,90);
-  stroke(150,150,150);
-  ellipse(150,-10,220,80);
-
-}
-void backgroundr(){
-background(10,12,12);}
-
-void reset(){
-background(0,0,0);
-backgroundr();
-  lightning();
-  cloud();
-   raindrop();
-
-}
-void lines(float x,float y,float z,float q)
-{
-line(x,y,z,q);
-line(z,q,z+50*r1,q+30*r2+15);
-z = z+50*r1;
-q = q+30*r2+15;
-line(z,q,z-50*r3,q+30*r4+15);
-z = z-50*r3;
-q = q+30*r4+15;
-line(z,q,z+50*r5,q+30*r6+15);
-z = z+50*r5;
-q = q+30*r6+15;
-line(z,q,z-50*r7,q+30*r8+15);
-z = z-50*r7;
-q = q+30*r8+15;
-line(z,q,z+50*r9,q+30*r10+15);
-z = z+50*r9;
-q = q+30*r10+15;
-line(z,q,z-50*r1,q+32*r2+15);
-z = z-50*r1;
-q = q+32*r2+15;
-line(z,q,z+50*r1,300);
-}
-void valued()
-{
-  r1 = (float)Math.random();
-  r2 = (float)Math.random();
-  r3 = (float)Math.random();
-  r4 = (float)Math.random();
-  r5 = (float)Math.random();
-  r6 = (float)Math.random();
-  r7 = (float)Math.random();
-  r8 = (float)Math.random();
-  r9 = (float)Math.random();
-  r10 = (float)Math.random();
-}
-void raindrop() {
-  fill(0,0,255);
-  ellipse(random(width),random(height)+50,0.1,0.1);
-    fill(0,0,255);
-  ellipse(random(width),random(height)+50,0.1,0.1);
-    fill(0,0,255);
-  ellipse(random(width),random(height)+50,0.1,0.1);
-}
-
-int x1 = 150;
-int x2 = 150;
-int y1 = 0;
-int y2 = 0;
-
-
-void setup()
-{
-  size(300,300);
-  strokeWeight(5);
-  background(0);
-}
-
-void draw()
-{
-  stroke(200,200,0);
-  while (y2 < 300)
-  {
-    x2 = x1 + (int)(Math.random()*20-9);
-    y2 = y1 + (int)(Math.random()*10);
-    line(x1,y1,x2,y2);
-    y1 = y2;
-    x1 = x2;
-   
-  }
- 
 }
 
 void cloud() {
   fill(90, 90, 90);
   stroke(150, 150, 150);
   ellipse(150, -10, 220, 80);
+}
+
+void valued() {
+  x1 = 150;
+  x2 = 150;
+  y1 = 40;
+  y2 = 0;
+  ry1 = 0;
+  background(0);
+}
+
+void raindrops() {
+  if (ry1 < 300)
+  {
+    droplets((int)(Math.random()*200)+50, ry1);
+    ry1 = ry1 + (int)(Math.random()*6)+2;
+  }
+  if (ry1 > 299)
+    ry1 = 0;
+
+
+  if (ry2 < 300)
+  {
+    droplets((int)(Math.random()*200)+70, ry2);
+    ry2 = ry2 + (int)(Math.random()*10)+5;
+  }
+  if (ry2 > 299)
+    ry2 = 0;
+}
+
+
+void droplets(int x, float y)
+{
+  stroke(0, 0, 255);
+  rect(x, y+40, 0.1, 0.1);
 }
