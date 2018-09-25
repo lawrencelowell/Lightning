@@ -53,7 +53,7 @@ void draw()
   {
     textSize(35);
     fill(155,0,0);
-text("Memed", 100, 150);
+text("Spooked", 80, 150);
   }
 }
 void mousePressed()
